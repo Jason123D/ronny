@@ -3,27 +3,27 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Para Beatriz 💗</title>
+<title>Para Beatriz 💙</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@500;700&family=Playfair+Display:ital,wght@0,500;0,700;1,500&family=Poppins:wght@200;300;400;600&display=swap" rel="stylesheet">
 <style>
   *{box-sizing:border-box;margin:0;padding:0}
   :root{
-    --rose:#ff6fa5;
-    --rose-light:#ffb3cf;
-    --gold:#f6c87a;
-    --text:#ffeef5;
-    --muted:#c9a5b8;
-    --card:rgba(255,255,255,.045);
-    --border:rgba(255,179,207,.18);
-    --ink:#5a2a40;
+    --rose:#5aa9ff;          /* azul principal */
+    --rose-light:#a8d4ff;    /* azul claro */
+    --gold:#f6c87a;          /* toque dorado */
+    --text:#eef6ff;
+    --muted:#9fb6d6;
+    --card:rgba(255,255,255,.05);
+    --border:rgba(168,212,255,.2);
+    --ink:#1e3a5f;
   }
   html{scroll-behavior:smooth}
   body{
     font-family:'Poppins',system-ui,sans-serif;
     color:var(--text);
-    background:#14060f;
+    background:#050b1f;
     overflow-x:hidden;
     min-height:100vh;
     -webkit-font-smoothing:antialiased;
@@ -31,10 +31,10 @@
   body::before{
     content:'';position:fixed;inset:0;z-index:-3;
     background:
-      radial-gradient(ellipse at 15% 8%, rgba(255,111,165,.22), transparent 55%),
-      radial-gradient(ellipse at 85% 28%, rgba(246,200,122,.12), transparent 50%),
-      radial-gradient(ellipse at 50% 95%, rgba(160,60,200,.20), transparent 55%),
-      linear-gradient(165deg,#14060f,#25091f 45%,#0d0410);
+      radial-gradient(ellipse at 15% 8%, rgba(59,130,246,.30), transparent 55%),
+      radial-gradient(ellipse at 85% 28%, rgba(34,211,238,.14), transparent 50%),
+      radial-gradient(ellipse at 50% 95%, rgba(99,102,241,.24), transparent 55%),
+      linear-gradient(165deg,#050b1f,#0b1d45 45%,#040a1a);
   }
   body.locked,body.modal-open{overflow:hidden;height:100vh}
 
@@ -46,7 +46,7 @@
   #intro{
     position:fixed;inset:0;z-index:100;
     display:grid;place-items:center;
-    background:radial-gradient(circle at 50% 50%, #2b0a22 0%, #12050e 70%);
+    background:radial-gradient(circle at 50% 50%, #0f2556 0%, #040a1a 70%);
     transition:opacity 1.1s ease, visibility 1.1s ease;
   }
   #intro.hide{opacity:0;visibility:hidden}
@@ -71,7 +71,7 @@
   }
   #openBtn svg{
     width:100%;height:100%;
-    filter:drop-shadow(0 0 22px rgba(255,111,165,.75));
+    filter:drop-shadow(0 0 22px rgba(90,169,255,.8));
     animation:beat 1.5s ease-in-out infinite;
   }
   #openBtn::after{
@@ -91,7 +91,7 @@
 
   .divider{
     display:flex;align-items:center;justify-content:center;gap:14px;
-    color:var(--rose-light);opacity:.55;font-size:14px;
+    color:var(--rose-light);opacity:.6;font-size:14px;
   }
   .divider::before,.divider::after{
     content:'';height:1px;width:min(120px,25vw);
@@ -111,13 +111,13 @@
     font-weight:700;
     font-size:clamp(58px,14vw,140px);
     line-height:1;
-    background:linear-gradient(100deg,#ff6fa5,#ffb3cf,#f6c87a,#ff6fa5);
+    background:linear-gradient(100deg,#5aa9ff,#a8d4ff,#e6f3ff,#7dd3fc,#5aa9ff);
     background-size:300% 100%;
     -webkit-background-clip:text;background-clip:text;
     color:transparent;
     animation:shimmer 7s linear infinite;
     padding:0 .1em .12em;
-    filter:drop-shadow(0 0 30px rgba(255,111,165,.25));
+    filter:drop-shadow(0 0 30px rgba(90,169,255,.3));
   }
   .surname{
     font-family:'Playfair Display',serif;font-style:italic;
@@ -132,8 +132,38 @@
   }
   .caret{color:var(--rose);animation:blink 1s step-end infinite}
   @keyframes blink{50%{opacity:0}}
-  .scroll-hint{margin-top:60px;font-size:22px;color:var(--rose);animation:floaty 2.2s ease-in-out infinite;opacity:.7}
+  .scroll-hint{margin-top:40px;font-size:22px;color:var(--rose);animation:floaty 2.2s ease-in-out infinite;opacity:.7}
   @keyframes floaty{0%,100%{transform:translateY(0)}50%{transform:translateY(10px)}}
+
+  /* ---------- FOTOS ENMARCADAS ---------- */
+  .photo-frame{
+    position:relative;
+    background:#f7fbff;
+    padding:12px 12px 50px;border-radius:4px;
+    box-shadow:0 24px 50px rgba(0,0,0,.55), 0 0 44px rgba(90,169,255,.22);
+    cursor:pointer;-webkit-tap-highlight-color:transparent;
+    transition:transform .5s cubic-bezier(.2,.8,.3,1), box-shadow .5s;
+  }
+  .photo-frame img{display:block;width:100%;height:auto;max-height:62svh;object-fit:cover;border-radius:2px}
+  .photo-frame .ph-empty{
+    height:240px;border-radius:2px;display:grid;place-items:center;
+    background:linear-gradient(135deg,#a8d4ff,#5aa9ff);color:#fff;font-size:13px;text-align:center;padding:16px;
+  }
+  .photo-frame figcaption{
+    position:absolute;left:0;right:0;bottom:12px;text-align:center;
+    font-family:'Dancing Script',cursive;font-size:23px;color:#2f5f9e;
+  }
+  .photo-frame::before,.photo-frame::after{
+    content:'';position:absolute;top:-12px;width:84px;height:26px;z-index:2;
+    background:rgba(125,190,255,.75);box-shadow:0 2px 4px rgba(0,0,0,.12);
+  }
+  .photo-frame::before{left:-16px;transform:rotate(-30deg)}
+  .photo-frame::after{right:-16px;transform:rotate(30deg);background:rgba(246,200,122,.75)}
+  .hero-photo{width:min(270px,68vw);margin-top:44px;animation:heroFloat 6s ease-in-out infinite}
+  @keyframes heroFloat{0%,100%{transform:rotate(-3deg) translateY(0)}50%{transform:rotate(-1deg) translateY(-8px)}}
+  .feature-photo{width:min(430px,88vw);margin:0 auto;transform:rotate(2deg)}
+  .feature-photo:hover{transform:rotate(0) scale(1.03);box-shadow:0 30px 60px rgba(0,0,0,.6), 0 0 60px rgba(90,169,255,.35)}
+  .photo-section{padding-top:30px}
 
   /* ---------- HEADINGS ---------- */
   .sec-title{
@@ -155,7 +185,7 @@
     border-radius:18px;padding:22px 8px;text-align:center;
     backdrop-filter:blur(8px);transition:transform .35s, border-color .35s;
   }
-  .count-item:hover{transform:translateY(-5px);border-color:rgba(255,111,165,.5)}
+  .count-item:hover{transform:translateY(-5px);border-color:rgba(90,169,255,.55)}
   .count-item span{
     display:block;font-family:'Playfair Display',serif;
     font-size:clamp(24px,6vw,38px);color:var(--rose-light);
@@ -196,7 +226,7 @@
   .env-item.locked .env-label b{color:var(--muted)}
   .env-item.done .env-label small{color:var(--gold)}
   .env-item.next .env{animation:glow 2s ease-in-out infinite}
-  @keyframes glow{0%,100%{filter:drop-shadow(0 0 0 rgba(255,111,165,0))}50%{filter:drop-shadow(0 0 22px rgba(255,111,165,.7))}}
+  @keyframes glow{0%,100%{filter:drop-shadow(0 0 0 rgba(90,169,255,0))}50%{filter:drop-shadow(0 0 24px rgba(90,169,255,.8))}}
   .shake{animation:shake .5s ease!important}
   @keyframes shake{0%,100%{transform:translateX(0)}20%{transform:translateX(-9px)}40%{transform:translateX(8px)}60%{transform:translateX(-6px)}80%{transform:translateX(4px)}}
 
@@ -206,32 +236,32 @@
     position:relative;perspective:900px;
     filter:drop-shadow(0 18px 30px rgba(0,0,0,.45));
   }
-  .env-back{position:absolute;inset:0;border-radius:10px;background:linear-gradient(160deg,#e9789f,#c9557f)}
+  .env-back{position:absolute;inset:0;border-radius:10px;background:linear-gradient(160deg,#3b7fd9,#2556a8)}
   .env-paper{
     position:absolute;left:7%;right:7%;top:7%;height:86%;
     background:
-      repeating-linear-gradient(180deg,transparent 0 13px,rgba(255,111,165,.18) 13px 14px),
-      #fff8f2;
+      repeating-linear-gradient(180deg,transparent 0 13px,rgba(90,169,255,.2) 13px 14px),
+      #f7fbff;
     border-radius:6px;z-index:2;
     display:grid;place-items:start center;padding-top:10%;
-    font-family:'Dancing Script',cursive;color:#c9557f;
+    font-family:'Dancing Script',cursive;color:#2f6fc4;
     font-size:calc(var(--w) * .085);
     transition:transform .9s cubic-bezier(.3,.7,.3,1) .45s;
   }
   .env-front{
     position:absolute;inset:0;z-index:3;border-radius:10px;
-    background:linear-gradient(165deg,#ffc2d6,#f48db1 70%,#ea7ba3);
+    background:linear-gradient(165deg,#bfe0ff,#7fb8f5 70%,#5c9ded);
     clip-path:polygon(0 0,50% 56%,100% 0,100% 100%,0 100%);
   }
   .env-front::after{
     content:attr(data-n);position:absolute;right:8%;bottom:9%;
     font-family:'Playfair Display',serif;font-size:calc(var(--w) * .08);
-    color:rgba(255,255,255,.75);
+    color:rgba(255,255,255,.8);
   }
   .env-flap{
     position:absolute;left:0;right:0;top:0;height:60%;z-index:4;
     transform-origin:top center;
-    background:linear-gradient(180deg,#ffb3cf,#f27aa5);
+    background:linear-gradient(180deg,#a8d4ff,#4f94e8);
     clip-path:polygon(0 0,100% 0,50% 100%);
     transition:transform .65s ease, z-index 0s linear .32s;
   }
@@ -239,11 +269,11 @@
     position:absolute;z-index:5;left:50%;top:60%;
     width:calc(var(--w) * .2);height:calc(var(--w) * .2);
     transform:translate(-50%,-50%);border-radius:50%;
-    background:radial-gradient(circle at 35% 30%,#ff8fa8,#c4204f 60%,#8e1238);
+    background:radial-gradient(circle at 35% 30%,#8cc4ff,#1e5bb8 60%,#0d3778);
     box-shadow:0 3px 8px rgba(0,0,0,.35), inset 0 -3px 6px rgba(0,0,0,.25);
     display:grid;place-items:center;
     font-family:'Dancing Script',cursive;font-weight:700;
-    font-size:calc(var(--w) * .11);color:#ffd9e6;
+    font-size:calc(var(--w) * .11);color:#e0f0ff;
     transition:opacity .35s, transform .35s;
   }
   .env.open .env-flap{transform:rotateX(180deg);z-index:1}
@@ -254,7 +284,7 @@
   #modal{
     position:fixed;inset:0;z-index:90;
     display:grid;place-items:center;
-    background:rgba(12,3,10,.82);
+    background:rgba(3,8,24,.85);
     backdrop-filter:blur(8px);
     opacity:0;visibility:hidden;
     transition:opacity .45s, visibility .45s;
@@ -269,9 +299,9 @@
   .letter-card{
     width:min(440px,94vw);max-height:90svh;overflow-y:auto;
     background:
-      radial-gradient(circle at 100% 0,rgba(255,179,207,.35),transparent 40%),
-      radial-gradient(circle at 0 100%,rgba(246,200,122,.25),transparent 40%),
-      #fff8f2;
+      radial-gradient(circle at 100% 0,rgba(168,212,255,.45),transparent 40%),
+      radial-gradient(circle at 0 100%,rgba(246,200,122,.22),transparent 40%),
+      #f7fbff;
     color:var(--ink);border-radius:20px;
     padding:26px 24px 28px;
     box-shadow:0 30px 80px rgba(0,0,0,.6);
@@ -284,18 +314,18 @@
   .close-x{
     position:absolute;top:10px;right:12px;z-index:3;
     width:34px;height:34px;border-radius:50%;border:none;
-    background:rgba(201,85,127,.12);color:#c9557f;font-size:18px;cursor:pointer;
+    background:rgba(47,111,196,.12);color:#2f6fc4;font-size:18px;cursor:pointer;
   }
-  .card-num{font-size:10px;letter-spacing:3px;text-transform:uppercase;color:#c98aa5;text-align:center}
+  .card-num{font-size:10px;letter-spacing:3px;text-transform:uppercase;color:#7f9cc4;text-align:center}
   .card-photo{
     position:relative;margin:16px auto 20px;
     background:#fff;padding:10px 10px 12px;border-radius:4px;
-    box-shadow:0 14px 30px rgba(90,42,64,.25);
+    box-shadow:0 14px 30px rgba(30,58,95,.25);
     transform:rotate(-1.8deg);width:92%;
   }
   .card-photo::before,.card-photo::after{
     content:'';position:absolute;top:-12px;width:78px;height:24px;
-    background:rgba(255,179,207,.75);
+    background:rgba(125,190,255,.75);
     box-shadow:0 2px 4px rgba(0,0,0,.08);
   }
   .card-photo::before{left:-14px;transform:rotate(-28deg)}
@@ -307,24 +337,24 @@
   @keyframes develop{from{filter:brightness(1.8) saturate(0) blur(4px)}to{filter:none}}
   .photo-fallback{
     display:none;height:240px;border-radius:2px;
-    background:linear-gradient(135deg,#ffb3cf,#f6c87a);
+    background:linear-gradient(135deg,#a8d4ff,#5aa9ff);
     place-items:center;color:#fff;font-size:14px;text-align:center;padding:20px;
   }
   .card-title{
     font-family:'Dancing Script',cursive;font-weight:700;
-    font-size:clamp(28px,7vw,36px);color:#d4487b;text-align:center;line-height:1.1;
+    font-size:clamp(28px,7vw,36px);color:#2f6fc4;text-align:center;line-height:1.1;
   }
   .card-text{
     margin-top:14px;font-weight:300;font-size:15px;line-height:1.85;
     white-space:pre-line;min-height:8em;cursor:pointer;
   }
-  .card-sign{display:block;margin-top:18px;text-align:right;font-family:'Dancing Script',cursive;font-size:22px;color:#c9557f}
+  .card-sign{display:block;margin-top:18px;text-align:right;font-family:'Dancing Script',cursive;font-size:22px;color:#3b7fd9}
   .keep-btn{
     display:block;margin:22px auto 0;
     font-family:'Poppins',sans-serif;font-size:13px;letter-spacing:.5px;
     color:#fff;border:none;border-radius:100px;padding:13px 28px;cursor:pointer;
-    background:linear-gradient(120deg,#ff6fa5,#d4487b);
-    box-shadow:0 10px 26px rgba(212,72,123,.35);
+    background:linear-gradient(120deg,#5aa9ff,#2f6fc4);
+    box-shadow:0 10px 26px rgba(47,111,196,.4);
     transition:transform .25s;
   }
   .keep-btn:hover{transform:translateY(-2px) scale(1.03)}
@@ -339,13 +369,13 @@
     border-radius:20px;display:grid;place-items:center;padding:20px;text-align:center;
     border:1px solid var(--border);
   }
-  .rc-front{background:linear-gradient(150deg,rgba(255,111,165,.14),rgba(255,255,255,.03));backdrop-filter:blur(8px)}
-  .rc-front .num{font-family:'Playfair Display',serif;font-size:46px;color:rgba(255,179,207,.55);line-height:1}
+  .rc-front{background:linear-gradient(150deg,rgba(90,169,255,.16),rgba(255,255,255,.03));backdrop-filter:blur(8px)}
+  .rc-front .num{font-family:'Playfair Display',serif;font-size:46px;color:rgba(168,212,255,.6);line-height:1}
   .rc-front .tap{position:absolute;bottom:16px;font-size:9px;letter-spacing:2.5px;text-transform:uppercase;color:var(--muted);opacity:.6}
   .rc-back{
-    background:linear-gradient(150deg,rgba(246,200,122,.16),rgba(255,111,165,.16));
+    background:linear-gradient(150deg,rgba(125,211,252,.16),rgba(59,130,246,.22));
     transform:rotateY(180deg);backdrop-filter:blur(10px);
-    font-size:14px;font-weight:300;line-height:1.55;color:#fff3f8;
+    font-size:14px;font-weight:300;line-height:1.55;color:#f2f8ff;
   }
 
   /* ---------- LETTER ---------- */
@@ -356,30 +386,30 @@
   }
   .letter::before{
     content:'';position:absolute;top:-60px;right:-60px;width:200px;height:200px;border-radius:50%;
-    background:radial-gradient(circle,rgba(255,111,165,.22),transparent 70%);
+    background:radial-gradient(circle,rgba(90,169,255,.25),transparent 70%);
   }
-  .letter p{font-weight:200;font-size:clamp(14px,3.3vw,16.5px);line-height:1.95;color:#ffe3ee;white-space:pre-line}
+  .letter p{font-weight:200;font-size:clamp(14px,3.3vw,16.5px);line-height:1.95;color:#e3efff;white-space:pre-line}
   .letter .firma{display:block;margin-top:32px;font-family:'Dancing Script',cursive;font-size:26px;color:var(--gold);text-align:right}
 
   /* ---------- FINALE ---------- */
   .finale{text-align:center;padding-bottom:160px}
   #loveBtn{
     font-family:'Poppins',sans-serif;font-size:15px;font-weight:400;letter-spacing:1px;
-    color:#2a0716;
-    background:linear-gradient(120deg,#ffb3cf,#ff6fa5 45%,#f6c87a);
+    color:#06122b;
+    background:linear-gradient(120deg,#a8d4ff,#5aa9ff 50%,#7dd3fc);
     background-size:200% 100%;
     border:none;border-radius:100px;padding:18px 46px;cursor:pointer;
-    box-shadow:0 14px 40px rgba(255,111,165,.35);
+    box-shadow:0 14px 40px rgba(90,169,255,.4);
     transition:transform .3s, box-shadow .3s, background-position .6s, filter .6s;
     -webkit-tap-highlight-color:transparent;
   }
-  #loveBtn:hover{transform:translateY(-3px) scale(1.03);box-shadow:0 20px 54px rgba(255,111,165,.55);background-position:100% 0}
+  #loveBtn:hover{transform:translateY(-3px) scale(1.03);box-shadow:0 20px 54px rgba(90,169,255,.6);background-position:100% 0}
   #loveBtn.locked{filter:grayscale(.9) brightness(.6);cursor:not-allowed;box-shadow:none}
   #loveBtn.unlocked{animation:beat 1.6s ease-in-out infinite}
   #finalMsg{
     margin-top:44px;font-family:'Playfair Display',serif;font-style:italic;
     font-size:clamp(20px,5vw,34px);line-height:1.5;
-    background:linear-gradient(100deg,#ffb3cf,#f6c87a,#ff6fa5);background-size:250% 100%;
+    background:linear-gradient(100deg,#a8d4ff,#e6f3ff,#5aa9ff,#7dd3fc);background-size:250% 100%;
     -webkit-background-clip:text;background-clip:text;color:transparent;
     animation:shimmer 6s linear infinite;
     opacity:0;transform:translateY(20px) scale(.94);
@@ -395,7 +425,7 @@
     font-family:'Poppins',sans-serif;font-size:15px;border:none;border-radius:100px;
     padding:14px 36px;cursor:pointer;transition:transform .3s cubic-bezier(.3,1.5,.5,1);
   }
-  #yesBtn{left:18%;color:#2a0716;background:linear-gradient(120deg,#ffb3cf,#ff6fa5);box-shadow:0 12px 30px rgba(255,111,165,.4)}
+  #yesBtn{left:18%;color:#06122b;background:linear-gradient(120deg,#a8d4ff,#5aa9ff);box-shadow:0 12px 30px rgba(90,169,255,.45)}
   #yesBtn:hover{transform:scale(1.1)}
   #noBtn{right:18%;color:var(--muted);background:rgba(255,255,255,.07);border:1px solid var(--border)}
   #yesMsg{
@@ -408,7 +438,7 @@
   #toast{
     position:fixed;left:50%;bottom:28px;z-index:96;
     transform:translate(-50%,30px);opacity:0;
-    background:rgba(40,10,32,.92);border:1px solid var(--border);
+    background:rgba(8,18,44,.92);border:1px solid var(--border);
     color:var(--rose-light);font-size:13px;letter-spacing:.3px;
     padding:12px 22px;border-radius:100px;backdrop-filter:blur(10px);
     transition:opacity .4s, transform .4s;pointer-events:none;
@@ -420,7 +450,7 @@
   #musicBtn{
     position:fixed;right:20px;bottom:20px;z-index:60;
     width:52px;height:52px;border-radius:50%;
-    border:1px solid var(--border);background:rgba(30,8,24,.72);backdrop-filter:blur(10px);
+    border:1px solid var(--border);background:rgba(8,18,44,.72);backdrop-filter:blur(10px);
     color:var(--rose-light);display:grid;place-items:center;cursor:pointer;
     transition:transform .3s, border-color .3s, color .3s;
     -webkit-tap-highlight-color:transparent;
@@ -452,9 +482,9 @@
       <svg viewBox="0 0 100 100" fill="none">
         <defs>
           <linearGradient id="hg" x1="0" y1="0" x2="1" y2="1">
-            <stop offset="0%" stop-color="#ffb3cf"/>
-            <stop offset="50%" stop-color="#ff6fa5"/>
-            <stop offset="100%" stop-color="#f6c87a"/>
+            <stop offset="0%" stop-color="#a8d4ff"/>
+            <stop offset="50%" stop-color="#5aa9ff"/>
+            <stop offset="100%" stop-color="#2f6fc4"/>
           </linearGradient>
         </defs>
         <path d="M50 84 C50 84 10 58 10 34 C10 20 21 12 31 12 C39 12 46 17 50 24 C54 17 61 12 69 12 C79 12 90 20 90 34 C90 58 50 84 50 84 Z" fill="url(#hg)"/>
@@ -470,14 +500,21 @@
   <section class="hero">
     <p class="eyebrow">Hecho solo para ti</p>
     <h1 class="title" id="heroName">Beatriz</h1>
-    <p class="surname" id="heroSurname">Piche</p>
+    <p class="surname" id="heroSurname">Para mi Bee</p>
     <p class="typed"><span id="typed"></span><span class="caret">|</span></p>
+
+    <!-- FOTO DE PORTADA -->
+    <figure class="photo-frame hero-photo" id="heroPhoto">
+      <img id="heroImg" alt="Beatriz">
+      <figcaption id="heroCap"></figcaption>
+    </figure>
+
     <div class="scroll-hint">↓</div>
   </section>
 
   <!-- CONTADOR -->
   <section class="reveal">
-    <h2 class="sec-title">Nuestro tiempo juntos</h2>
+    <h2 class="sec-title">El instante en que comenzo nuestra Historia</h2>
     <p class="sec-sub">y sigue contando, segundo a segundo</p>
     <div class="count-grid">
       <div class="count-item"><span id="cD">0</span><small>Días</small></div>
@@ -488,11 +525,11 @@
     <p class="since">Desde el <span id="sinceTxt"></span></p>
   </section>
 
-  <div class="divider">💗</div>
+  <div class="divider">💙</div>
 
   <!-- CARTITAS -->
   <section class="reveal" id="cartitas">
-    <h2 class="sec-title">Cartitas para <em>ti</em></h2>
+    <h2 class="sec-title">Cartas para <em>Amada</em></h2>
     <p class="sec-sub">ábrelas en orden… cada una guarda un pedacito de mí</p>
     <div class="progress">
       <div class="progress-hearts" id="progHearts"></div>
@@ -501,13 +538,21 @@
     <div class="env-grid" id="envGrid"></div>
   </section>
 
-  <div class="divider">💗</div>
+  <div class="divider">💙</div>
 
   <!-- RAZONES -->
   <section class="reveal">
-    <h2 class="sec-title">Razones por las que te amo</h2>
+    <h2 class="sec-title">Razones por las que te quiero</h2>
     <p class="sec-sub">toca cada carta para descubrirla</p>
     <div class="reasons-grid" id="reasonsGrid"></div>
+  </section>
+
+  <!-- FOTO DEBAJO DE LAS RAZONES -->
+  <section class="reveal photo-section">
+    <figure class="photo-frame feature-photo" id="featPhoto">
+      <img id="featImg" alt="Beatriz">
+      <figcaption id="featCap"></figcaption>
+    </figure>
   </section>
 
   <!-- CARTA -->
@@ -529,7 +574,7 @@
     <div id="question">
       <h3 id="qText"></h3>
       <div class="answers" id="answers">
-        <button id="yesBtn">Sí 💗</button>
+        <button id="yesBtn">Sí 💙</button>
         <button id="noBtn">No</button>
       </div>
       <p id="yesMsg"></p>
@@ -558,7 +603,7 @@
       <h3 class="card-title" id="cardTitle"></h3>
       <p class="card-text" id="cardText"></p>
       <span class="card-sign" id="cardSign"></span>
-      <button class="keep-btn" id="keepBtn">Guardar en mi corazón 💗</button>
+      <button class="keep-btn" id="keepBtn">Guardar en mi corazón 💙</button>
     </div>
   </div>
 </div>
@@ -578,42 +623,40 @@
    ========================================================= */
 const CONFIG = {
   nombre: "Beatriz",
-  apellido: "Piche",
+  apellido: "Mi Bee",
   desde: "2025-02-09T20:30:00",   // ← cambia por la fecha en que empezaron
-  firma: "Tu Ronny",
+  firma: "Tu Oso",
 
   frase: "Desde el día en que te conocí, todo tiene más color.",
+
+  // Foto de portada (aparece debajo de la frase)
+  fotoPortada: {
+    foto: "photo_2026-09-29_21-27-44.jpg",
+    texto: "mi Bee 💙"
+  },
 
   // Las 5 cartitas (se abren en orden). Las fotos van en la MISMA carpeta que este index.html
   cartas: [
     {
       foto: "photo_2026-09-29_19-14-06.jpg",
-      titulo: "Donde todo empezó",
-      texto: `Esta fue la primera foto que me mandaste.
-
-Tal vez para ti fue una foto más, pero para mí fue el momento exacto en que lo supe. La miré una vez, luego otra, y otra más… y ahí entendí que ya no había vuelta atrás: me estaba enamorando de ti, Beatriz.
-
-Desde ese día esta foto dejó de ser solo una imagen. Es el primer capítulo de mi historia favorita, la que escribo contigo.`
+      titulo: "La Foto",
+      texto: `Esta fue la primera foto que me enviaste de ti después de que nos hicimos novios. Uno de mis más grandes tesoros. Quizás para alguien más sea simplemente una foto, pero para mí es un recuerdo de aquellos primeros días en los que, aun estando lejos, comenzábamos a construir algo que hoy significa muchísimo para mí..`
     },
     {
       foto: "photo_2026-09-29_19-14-08.jpg",
-      titulo: "Lo que me haces sentir",
-      texto: `Contigo aprendí que la felicidad cabe en cosas pequeñas: un mensaje tuyo en medio del día, tu forma de decir mi nombre, una foto que me hace sonreír como tonto frente a la pantalla.
-
-No sabes cuántas veces me has alegrado el día sin siquiera darte cuenta.`
+      titulo: "Un nuevo despertar",
+      texto: `Aún recuerdo tan vívidamente aquella nota de voz que, hasta el día de hoy, sigue resonando en mi mente. Fue aquel dieciséis de julio, tú, somnolienta, sin saber que en ese instante confirmaba que quería escuchar tu voz todas las mañanas, incluso aquellas en las que la distancia no me permitiera tenerte a mi lado.`
     },
     {
       foto: "photo_2026-09-29_19-14-04.jpg",
-      titulo: "Mi lugar favorito",
-      texto: `Si me preguntan cuál es mi lugar favorito en el mundo, no pienso en una playa ni en una ciudad.
+      titulo: "La pregunta que cambió todo",
+      texto: `Nuestra primera llamada larga duró más de seis horas y, aun así, sentí que habían sido solo unos minutos. Ese día pude conocer un poquito más de ti y descubrir esos pequeños detalles que quizás para otros pasan desapercibidos, pero que a mí me encantaron: lo bonito que comes, como una ardillita jajaaaajajja, cómo mueves los pies cuando estás entretenida y cómo subes las cejas cuando algo te sorprende.
 
-Pienso en ti.
-
-Porque donde estás tú, está mi calma, mi risa y mi hogar.`
+Fue un día de locos, pero de esos que uno quisiera repetir. Y aunque estábamos lejos, sentí que por unas horas la distancia no importaba. Desde ese domingo, los domingos empezaron a tener un significado diferente para mí: se convirtieron en un día que espero porque sé que puedo tener un poquito más de ti.`
     },
     {
       foto: "photo_2026-09-29_19-14-02.jpg",
-      titulo: "Lo que sueño contigo",
+      titulo: "Nuestro primer domingo",
       texto: `Quiero más días contigo. Más fotos, más risas, más conversaciones hasta tarde, más abrazos que no se acaben.
 
 Quiero verte cumplir cada uno de tus sueños y estar a tu lado aplaudiendo más fuerte que nadie.`
@@ -623,23 +666,30 @@ Quiero verte cumplir cada uno de tus sueños y estar a tu lado aplaudiendo más 
       titulo: "Siempre tú",
       texto: `Si la vida me dejara elegir otra vez, no lo pensaría ni un segundo: te elegiría a ti.
 
-En esta vida y en todas las que existan.
+A aquella primera nota de voz que se convirtió en mi favorita, a esas llamadas que se nos van de las manos y terminan durando horas, y a cada pequeño momento que, aun con la distancia, ha conseguido hacerte sentir cerca.
 
-Te amo, Beatriz Piche. Hoy, mañana y siempre.`
+Porque contigo he aprendido que la distancia puede separar dos lugares, pero no necesariamente dos corazones.
+
+En esta vida y en todas las que existan, quiero seguir encontrándote.
+
+Porque si tuviera que volver a vivir nuestra historia desde el principio, conociendo todo lo que siento hoy, volvería a escoger el camino que me llevó hasta ti.`
     }
   ],
 
   razones: [
-    "Por la forma en que iluminas cualquier lugar con tu sonrisa.",
-    "Porque contigo hasta lo más aburrido se vuelve divertido.",
-    "Por cómo me escuchas, incluso cuando no digo nada.",
-    "Porque tu risa es mi sonido favorito del mundo.",
-    "Por la paz que siento cuando estoy contigo.",
-    "Porque me haces querer ser una mejor persona cada día.",
-    "Por tus ojos, que me desarman cada vez que me miras.",
-    "Porque eres mi lugar seguro, mi calma y mi aventura.",
-    "Porque te elegiría en todas las vidas posibles."
+    "Porque desde que llegaste a mi vida, hasta mis días más normales tienen algo especial, simplemente porque sé que estás en ellos.",
+    "Porque me haces querer contarte hasta las cosas más pequeñas de mi día, incluso aquellas que quizás no tengan importancia, solo porque me gusta compartir mi vida contigo.",
+    "Porque confío en ti. En tu forma de ser, en tus palabras y en todo lo que hemos construido juntos, incluso con todos los kilómetros que existen entre nosotros.",
+    "Porque me haces extrañarte muchísimo, pero al mismo tiempo me das razones para esperar cada llamada, cada domingo y cada momento en el que puedo volver a sentirte un poquito más cerca.",
+    "Porque incluso estando lejos, has conseguido convertirte en una parte crucial de mi día a día.",
+    "Porque eres tú. Con tu voz, tus ocurrencias, tus gestos y esa forma tan tuya de hacerme sentir querido."
   ],
+
+  // Foto que aparece debajo de las razones
+  fotoRazones: {
+    foto: "photo_2026-09-29_21-27-47.jpg",
+    texto: "mi razón favorita 💙"
+  },
 
   carta: `Hola, mi amor.
 
@@ -651,9 +701,9 @@ Gracias por tu paciencia, por tu ternura, por esas risas que se me quedan pegada
 
 Si algún día dudas de cuánto te quiero, vuelve a esta página. Y si aun así dudas, ven a abrazarme: ahí lo vas a sentir mejor que en cualquier palabra.`,
 
-  mensajeFinal: "Beatriz, te amo más de lo que esta página puede decir. 💗",
-  pregunta: "¿Te quedas conmigo para siempre?",
-  respuestaSi: "Sabía que dirías que sí 💗"
+  mensajeFinal: "Este será nuestro primer cumpleaños juntos, aunque la distancia no me permita abrazarte y celebrarlo a tu lado como quisiera. Pero sé que será el primero de muchos que nos quedan por vivir. Quiero que cuando leas esto recuerdes que, entre todas las cosas que la vida pudo regalarme, encontrarte a ti ha sido una de las más bonitas. Feliz cumpleaños, cariño mío. Espero poder celebrar muchos más contigo, pero esta vez teniéndote entre mis brazos. Te amo hoy, te amaré mañana y espero poder seguir diciéndotelo en cada cumpleaños que nos quede por compartir. 💙",
+  pregunta: "¿Me dejas ser parte de todos tus cumpleaños a partir de ahora?",
+  respuestaSi: "Sabía que dirías que sí 💙"
 };
 
 /* =========================================================
@@ -661,7 +711,7 @@ Si algún día dudas de cuánto te quiero, vuelve a esta página. Y si aun así 
    ========================================================= */
 const sCanvas = document.getElementById('stars');
 const sctx = sCanvas.getContext('2d');
-const stars = Array.from({length:80}, () => ({
+const stars = Array.from({length:90}, () => ({
   x:Math.random(), y:Math.random(),
   r:.4 + Math.random()*1.3,
   ph:Math.random()*Math.PI*2,
@@ -669,13 +719,13 @@ const stars = Array.from({length:80}, () => ({
 }));
 
 /* =========================================================
-   CANVAS — corazones y partículas
+   CANVAS — corazones y partículas (tonos azules)
    ========================================================= */
 const canvas = document.getElementById('fx');
 const ctx = canvas.getContext('2d');
 let W = 0, H = 0;
 const particles = [];
-const PALETTE = ['#ff6fa5','#ffb3cf','#f6c87a','#ff8fbc','#ffd9e6'];
+const PALETTE = ['#5aa9ff','#a8d4ff','#7dd3fc','#3b82f6','#dbeafe','#93c5fd','#60a5fa'];
 
 function resize(){
   const dpr = Math.min(window.devicePixelRatio || 1, 2);
@@ -711,7 +761,7 @@ function makeHeart(o){
     sway:Math.random()*Math.PI*2,swayAmp:18,swaySpeed:.8,color:pick()},o);
 }
 function makeSpark(o){
-  return Object.assign({type:'spark',x:0,y:0,vx:0,vy:0,size:3,alpha:1,decay:.9,color:'#ffb3cf'},o);
+  return Object.assign({type:'spark',x:0,y:0,vx:0,vy:0,size:3,alpha:1,decay:.9,color:'#a8d4ff'},o);
 }
 function burst(x,y,count,power=1){
   for (let i=0;i<count;i++){
@@ -754,7 +804,7 @@ function loop(t){
   for (const s of stars){
     const a = .25 + .55*(.5+.5*Math.sin(ts*s.sp + s.ph));
     sctx.globalAlpha = a;
-    sctx.fillStyle = '#ffe6f0';
+    sctx.fillStyle = '#e6f1ff';
     sctx.beginPath(); sctx.arc(s.x*W, s.y*H, s.r, 0, Math.PI*2); sctx.fill();
   }
   sctx.globalAlpha = 1;
@@ -825,6 +875,27 @@ document.getElementById('finalMsg').textContent = CONFIG.mensajeFinal;
 document.getElementById('qText').textContent = CONFIG.pregunta;
 document.getElementById('yesMsg').textContent = CONFIG.respuestaSi;
 
+// Fotos enmarcadas (portada y debajo de las razones)
+function setupPhoto(frameId, imgId, capId, data){
+  const frame = document.getElementById(frameId);
+  const img = document.getElementById(imgId);
+  document.getElementById(capId).textContent = data.texto;
+  img.addEventListener('error', () => {
+    const ph = document.createElement('div');
+    ph.className = 'ph-empty';
+    ph.innerHTML = '📷<br>Coloca ' + data.foto + '<br>en la misma carpeta que index.html';
+    img.replaceWith(ph);
+  });
+  img.src = data.foto;
+  frame.addEventListener('click', () => {
+    const r = frame.getBoundingClientRect();
+    burst(r.left + r.width/2, r.top + r.height/2, 40);
+    chime([76,79,83]);
+  });
+}
+setupPhoto('heroPhoto','heroImg','heroCap', CONFIG.fotoPortada);
+setupPhoto('featPhoto','featImg','featCap', CONFIG.fotoRazones);
+
 // Razones
 const grid = document.getElementById('reasonsGrid');
 CONFIG.razones.forEach((txt,i) => {
@@ -890,7 +961,7 @@ CONFIG.cartas.forEach((c,i) => {
   envGrid.appendChild(item);
 
   const h = document.createElement('i');
-  h.textContent = '💗';
+  h.textContent = '💙';
   progHearts.appendChild(h);
 });
 
@@ -904,7 +975,7 @@ function refreshEnvelopes(){
     item.classList.toggle('done', done);
     item.classList.toggle('next', !locked && !done);
     item.querySelector('.env-seal').textContent = locked ? '🔒' : 'B';
-    item.querySelector('small').textContent = done ? 'abierta 💗' : (locked ? 'bloqueada' : `cartita ${i+1} · ábreme`);
+    item.querySelector('small').textContent = done ? 'abierta 💙' : (locked ? 'bloqueada' : `cartita ${i+1} · ábreme`);
   });
   [...progHearts.children].forEach((h,i) => h.classList.toggle('on', i < opened.size));
   progTxt.textContent = `${opened.size} de ${total} cartitas abiertas`;
@@ -1042,7 +1113,7 @@ function unlockFinal(){
   finalUnlocked = true;
   loveBtn.classList.remove('locked');
   loveBtn.classList.add('unlocked');
-  loveBtn.textContent = 'Presióname 💗';
+  loveBtn.textContent = 'Presióname 💙';
   document.getElementById('finalHint').textContent = '¡la desbloqueaste! presiona el botón';
   setTimeout(() => toast('✨ Desbloqueaste la sorpresa final — baja hasta el final ✨'), 900);
 }
@@ -1066,7 +1137,7 @@ loveBtn.addEventListener('click', () => {
 // Botón "No" que se escapa
 const noBtn = document.getElementById('noBtn');
 const answers = document.getElementById('answers');
-const noPhrases = ['¿Segura? 🥺','Piénsalo bien…','Ese botón no funciona 😌','Inténtalo otra vez 💗','Solo hay una respuesta'];
+const noPhrases = ['¿Segura? 🥺','Piénsalo bien…','Ese botón no funciona 😌','Inténtalo otra vez 💙','Solo hay una respuesta'];
 let noIdx = 0;
 function dodge(e){
   if (e) e.preventDefault();
@@ -1178,7 +1249,7 @@ musicBtn.addEventListener('click', () => {
 });
 
 /* =========================================================
-   EXTRAS: estela del cursor + corazoncitos al tocar
+   EXTRAS: estela del cursor + corazoncitos al tocar (azules)
    ========================================================= */
 let lastTrail = 0;
 window.addEventListener('pointermove', e => {
@@ -1186,14 +1257,14 @@ window.addEventListener('pointermove', e => {
   if (now - lastTrail < 50) return;
   lastTrail = now;
   particles.push(makeHeart({x:e.clientX,y:e.clientY,vx:(Math.random()-.5)*40,vy:-30-Math.random()*40,
-    size:6+Math.random()*9,rot:(Math.random()-.5),vr:(Math.random()-.5)*3,alpha:.8,decay:1.5,sway:0,swayAmp:0}));
+    size:6+Math.random()*9,rot:(Math.random()-.5),vr:(Math.random()-.5)*3,alpha:.85,decay:1.5,sway:0,swayAmp:0}));
   if (Math.random() < .35){
     particles.push(makeSpark({x:e.clientX,y:e.clientY,vx:(Math.random()-.5)*60,vy:-20-Math.random()*40,
-      size:1+Math.random()*1.8,decay:1.6,color:'#f6c87a'}));
+      size:1+Math.random()*1.8,decay:1.6,color:'#bfe3ff'}));
   }
 });
 window.addEventListener('pointerdown', e => {
-  if (e.target.closest('button, .env-item, .rc, #modal')) return;
+  if (e.target.closest('button, .env-item, .rc, .photo-frame, #modal')) return;
   burst(e.clientX, e.clientY, 10, .6);
 });
 </script>
