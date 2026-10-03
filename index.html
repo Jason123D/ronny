@@ -466,6 +466,60 @@
     .env-grid .env{--w:250px}
     .answers button{padding:13px 28px}
   }
+    /* ---------- ACERTIJO ---------- */
+  .riddle{
+    max-width:720px;margin:0 auto;
+    background:var(--card);border:1px solid var(--border);border-radius:26px;
+    padding:clamp(28px,6vw,54px);backdrop-filter:blur(10px);
+    position:relative;overflow:hidden;
+  }
+  .riddle::before{
+    content:'';position:absolute;bottom:-70px;left:-70px;width:220px;height:220px;border-radius:50%;
+    background:radial-gradient(circle,rgba(246,200,122,.16),transparent 70%);
+  }
+  .riddle p{
+    font-weight:300;font-size:clamp(15px,3.5vw,18px);line-height:2.5;
+    color:#e3efff;text-align:center;position:relative;
+  }
+  .blank{
+    display:inline-block;max-width:100%;
+    padding:0 .8em;margin:0 .12em;border-radius:100px;
+    border:1px dashed rgba(168,212,255,.55);background:rgba(90,169,255,.1);
+    color:var(--rose-light);cursor:pointer;line-height:1.75;position:relative;
+    font-size:.92em;letter-spacing:1px;
+    transition:background .3s, border-color .3s, transform .3s;
+    -webkit-tap-highlight-color:transparent;
+  }
+  .blank::before{
+    content:attr(data-n);position:absolute;top:-10px;left:50%;transform:translateX(-50%);
+    font-family:'Poppins',sans-serif;font-size:9px;letter-spacing:1px;line-height:1.5;
+    background:#0b1d45;color:var(--muted);padding:0 6px;border-radius:6px;
+  }
+  .blank:not(.revealed):hover{border-color:var(--rose);background:rgba(90,169,255,.22);transform:translateY(-2px)}
+  .blank.revealed{
+    border-style:solid;border-color:rgba(246,200,122,.6);
+    background:linear-gradient(120deg,rgba(90,169,255,.28),rgba(246,200,122,.18));
+    color:#fff;font-family:'Dancing Script',cursive;font-weight:700;
+    font-size:1.25em;letter-spacing:0;cursor:default;
+    animation:songPop .7s cubic-bezier(.3,1.6,.5,1);
+  }
+  .blank.revealed::before{color:var(--gold)}
+  @keyframes songPop{0%{transform:scale(.5);opacity:0}100%{transform:none;opacity:1}}
+  .riddle-bar{display:flex;flex-direction:column;align-items:center;gap:16px;margin-top:32px}
+  .riddle-bar small{font-size:11px;letter-spacing:2.5px;text-transform:uppercase;color:var(--muted)}
+  #riddleBtn{
+    font-family:'Poppins',sans-serif;font-size:14px;letter-spacing:.5px;
+    color:#06122b;border:none;border-radius:100px;padding:14px 32px;cursor:pointer;
+    background:linear-gradient(120deg,#a8d4ff,#5aa9ff);
+    box-shadow:0 12px 30px rgba(90,169,255,.4);transition:transform .25s;
+  }
+  #riddleBtn:hover{transform:translateY(-2px) scale(1.04)}
+  #riddleEnd{
+    margin-top:30px;text-align:center;
+    font-family:'Dancing Script',cursive;font-size:clamp(26px,6vw,38px);color:var(--gold);
+    opacity:0;transform:scale(.85);transition:opacity 1s, transform 1s cubic-bezier(.2,1.4,.4,1);
+  }
+  #riddleEnd.show{opacity:1;transform:none}
 </style>
 </head>
 <body class="locked">
@@ -564,7 +618,21 @@
       <span class="firma" id="firma"></span>
     </div>
   </section>
+  <div class="divider">🎶</div>
 
+  <!-- ACERTIJO -->
+  <section class="reveal">
+    <h2 class="sec-title">Acertijo de <em>nuestras canciones</em></h2>
+    <p class="sec-sub">cada espacio es una canción nuestra… toca uno para descubrirla</p>
+    <div class="riddle">
+      <p id="riddleText"></p>
+    </div>
+    <div class="riddle-bar">
+      <small id="riddleProg"></small>
+      <button id="riddleBtn">Ver la respuesta 🎶</button>
+    </div>
+    <p id="riddleEnd">Cada canción, un pedacito de nosotros 💙</p>
+  </section>
   <!-- FINAL -->
   <section class="finale reveal">
     <h2 class="sec-title">Una última cosa…</h2>
@@ -712,7 +780,18 @@ Te amo.`,
 
   mensajeFinal: "Este será nuestro primer cumpleaños juntos, aunque la distancia no me permita abrazarte y celebrarlo a tu lado como quisiera. Pero sé que será el primero de muchos que nos quedan por vivir. Quiero que cuando leas esto recuerdes que, entre todas las cosas que la vida pudo regalarme, encontrarte a ti ha sido una de las más bonitas. Feliz cumpleaños, cariño mío. Espero poder celebrar muchos más contigo, pero esta vez teniéndote entre mis brazos. Te amo hoy, te amaré mañana y espero poder seguir diciéndotelo en cada cumpleaños que nos quede por compartir. 💙",
   pregunta: "¿Me dejas ser parte de todos tus cumpleaños a partir de ahora?",
-  respuestaSi: "Sabía que dirías que sí 💙"
+    respuestaSi: "Sabía que dirías que sí 💙",
+
+  // Acertijo: el texto normal va entre comillas, y cada canción va como { cancion: "..." }
+  acertijo: [
+    { cancion: "No pensé en enamorarme otra vez" }, " y te has vuelto ", { cancion: "Mi Persona Favorita" }, ". ",
+    { cancion: "Y así fue" }, " que, desde entonces, he podido decir ", { cancion: "Me He Enamorado" },
+    ", ya que, ", { cancion: "Desde Mis Ojos" }, ", eres mi ", { cancion: "Alma Gemela" }, ". ",
+    "Solo puedo expresar ", { cancion: "Te Siento" }, ", ", { cancion: "Vida Consentida" },
+    ", añorando cada momento ", { cancion: "Un Beso" }, " que sabrá a ", { cancion: "Miel" }, ". ",
+    "Me tienes ", { cancion: "Loco" }, ". ", { cancion: "Ay, Mujer" }, ", lo nuestro será ",
+    { cancion: "Un Amor Para la Historia" }, ". ", { cancion: "Te Amo" }, " demasiado. ❤️"
+  ]
 };
 
 /* =========================================================
@@ -1101,6 +1180,65 @@ function startTyping(){
     if (i <= txt.length){ typedEl.textContent = txt.slice(0,i); i++; setTimeout(step, 42 + Math.random()*55); }
   })();
 }
+/* =========================================================
+   ACERTIJO DE CANCIONES
+   ========================================================= */
+const riddleText = document.getElementById('riddleText');
+const riddleProg = document.getElementById('riddleProg');
+const riddleBtn  = document.getElementById('riddleBtn');
+const riddleEnd  = document.getElementById('riddleEnd');
+const blanks = [];
+let riddleDone = false;
+
+CONFIG.acertijo.forEach(part => {
+  if (typeof part === 'string'){ riddleText.appendChild(document.createTextNode(part)); return; }
+  const b = document.createElement('span');
+  b.className = 'blank';
+  b.dataset.n = blanks.length + 1;
+  b.dataset.song = part.cancion;
+  b.textContent = '♪ ? ♪';
+  b.addEventListener('click', () => revealBlank(b, true));
+  riddleText.appendChild(b);
+  blanks.push(b);
+});
+
+function revealBlank(b, fx){
+  if (b.classList.contains('revealed')) return;
+  b.classList.add('revealed');
+  b.textContent = b.dataset.song;
+  if (fx){
+    const r = b.getBoundingClientRect();
+    burst(r.left + r.width/2, r.top + r.height/2, 14, .7);
+    chime([76,79,84]);
+  }
+  updateRiddle();
+}
+
+function updateRiddle(){
+  const n = blanks.filter(b => b.classList.contains('revealed')).length;
+  riddleProg.textContent = `${n} de ${blanks.length} canciones descubiertas`;
+  if (n === blanks.length && !riddleDone){
+    riddleDone = true;
+    riddleBtn.style.display = 'none';
+    riddleProg.textContent = '¡todas descubiertas! 🎶';
+    setTimeout(() => {
+      riddleEnd.classList.add('show');
+      heartRain(25);
+      chime([72,76,79,84,88]);
+    }, 400);
+  }
+}
+updateRiddle();
+
+riddleBtn.addEventListener('click', () => {
+  const pending = blanks.filter(b => !b.classList.contains('revealed'));
+  pending.forEach((b,k) => setTimeout(() => {
+    revealBlank(b, false);
+    const r = b.getBoundingClientRect();
+    burst(r.left + r.width/2, r.top + r.height/2, 8, .5);
+    chime([79 + (k % 5)]);
+  }, k * 280));
+});
 
 /* =========================================================
    SCROLL REVEAL
